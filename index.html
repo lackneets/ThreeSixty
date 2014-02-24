@@ -3,6 +3,16 @@
 	<title>jQuery ThreeSixty 360 - 小博士轉轉轉</title>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/threesixty.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function () {
+		$('#viewer').threeSixty({
+			image: 'images/hakase-##.jpg', 
+			frames: 26,
+			startFrame: -28,
+			reverse: true
+		});
+	});
+	</script>
 
 </head>
 <body>

@@ -185,14 +185,4 @@
  		return this.each(function(){
  		})
  	}
- })
-
-$(document).ready(function () {
-
-	$('#viewer').threeSixty({
-		image: 'images/hakase-##.jpg', 
-		frames: 26,
-		startFrame: -28,
-		reverse: true
-	});
-});
+ });
