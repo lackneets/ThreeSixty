@@ -168,7 +168,7 @@
  			pressRotateTicker = setInterval(function(){
  				endFrame += pressRotate;
  				render();
- 			}, Math.round(1000 / 60))
+ 			}, Math.round(1000 / 10))
  		});
 
  		$([btnLeft[0], btnRight[0]]).on('mouseup', function (event){
