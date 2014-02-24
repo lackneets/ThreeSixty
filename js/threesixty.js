@@ -34,7 +34,22 @@
  		endFrame = 0,
  		loadedImages = 0;
 
- 		var wrapper = $('<div/>').css('cursor', 'col-resize').addClass('threeSixty').appendTo(options.element);
+ 		var wrapper = $('<div/>')
+ 		.css('cursor', 'col-resize')
+ 		.css('position', 'relative')
+ 		.addClass('threeSixty')
+ 		.appendTo(options.element);
+
+ 		var loading = $('<span/>')
+ 		.appendTo(wrapper)
+ 		.text('Loading...')
+ 		.addClass('loading')
+ 		.css({position: 'absolute', left: '50%', top: '50%', padding: '5px', 'border-radius': '5px', background: 'rgba(0,0,0,0.8)', color: '#CCC', 'font-size':'12px'}); 		
+
+ 		loading.css('margin-left', loading.width()/2*-1)
+ 		
+ 		
+ 		
 
  		$.extend(options, _options);
 
@@ -61,9 +76,11 @@
  		};
  		function imageLoaded() {
  			loadedImages++;
+ 			loading.text('Loading... ' + Math.ceil(loadedImages/options.frames*100) + '%');
  			if (loadedImages == options.frames) {
  				frames[0].show();
  				$(wrapper).width(frames[0].width())
+ 				$(loading).fadeOut();
  				showThreesixty();
  			} else {
  				loadImage();
