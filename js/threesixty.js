@@ -71,14 +71,13 @@
  		.css({position: 'absolute', right: '3%', top: '50%', 'margin-top': '40px'})
  		.css({background: 'rgba(0,0,0,0.5) url(images/buttons/zoom-in-2-16.png) no-repeat center', 'border-radius': '50%', width: '24px', height: '24px', padding:'3px'})
 
+ 		$([btnLeft[0], btnRight[0], btnZoom[0]]).hide();
 
  		var pressRotateTicker = 0;
 
  		loading.css('margin-left', loading.width()/2*-1)
  		
  		$.extend(options, _options);
-
- 		options.zoom ? btnZoom.show() : btnZoom.hide();
 
  		function compileFilename(path, number){
  			var numlen = (path.match(/[#]+/) || '').toString().length;
@@ -109,8 +108,7 @@
  			loading.text('Loading... ' + Math.ceil(loadedImages/options.frames*100) + '%');
  			if (loadedImages == options.frames) {
  				frames[0].show();
- 				$(wrapper).width(frames[0].width())
- 				$(loading).fadeOut();
+ 				
  				showThreesixty();
  			} else {
  				loadImage();
@@ -119,6 +117,10 @@
 
  		function showThreesixty () {
  			ready = true;
+ 			$(wrapper).width(frames[0].width())
+ 			$(loading).fadeOut();
+ 			$([btnLeft[0], btnRight[0]]).fadeIn('slow');
+ 			options.zoom ? btnZoom.fadeIn('slow') : btnZoom.hide();
  			endFrame = options.startFrame;
  			refresh();
  		};
